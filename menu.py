@@ -121,13 +121,10 @@ Render Samples:[value render_samples]
     nuke.thisNode().knob('label').setValue(customExpressions)
 
 
-
 nuke.addOnCreate(classicScanlineRender, nodeClass="ScanlineRender")
 #nuke.addOnCreate(newScanlineRender, nodeClass="ScanlineRender2")
 nuke.addOnCreate(Backdrop, nodeClass="BackdropNode")
 nuke.addOnCreate(StickyNote, nodeClass="StickyNote")
-
-
 
 # dot
 import Dots
@@ -137,12 +134,11 @@ n.addCommand ('Dots', 'Dots.Dots()', ',')
 
 # KeepSome
 import KeepSome
-nuke.menu( 'Nuke' ).addCommand( 'Python/Close all but selected', 'KeepSome.KeepSome()', 'alt+r' )
+nuke.menu('Nuke').addCommand('Python/Close all but selected', 'KeepSome.KeepSome()', 'alt+r')
 
 # Aditive Keyer
-nuke.menu( 'Nodes' ).addCommand( 'Keyer/AdditiveKeyer', 'nuke.createNode("AdditiveKeyer2.gizmo")')
-nuke.menu( 'Nodes' ).addCommand( 'Keyer/DespillMadness', 'nuke.createNode("DespillMadness.gizmo")')
-nuke.menu( 'Nodes' ).addCommand( 'Keyer/IBKColourMaster', 'nuke.createNode( "IBK_Color_Master_v3.gizmo" )')
-nuke.menu( 'Nodes' ).addCommand( 'Keyer/TXHueKeyer', 'nuke.createNode("TX_HueKeyer.gizmo")')
-
-nuke.menu( 'Nodes' ).addCommand( 'Other/Backdrop', 'nukescripts.autoBackdrop()','shift+b', icon='backdrop.png')
+nuke.menu('Nodes').addCommand('Keyer/AdditiveKeyer', 'nuke.createNode("AdditiveKeyer2.gizmo")', icon='Bilateral.png')
+nuke.menu('Nodes').addCommand('Keyer/DespillMadness', 'nuke.createNode("DespillMadness.gizmo")', icon='Add.png')
+nuke.menu('Nodes').addCommand('Keyer/IBKColourMaster', 'nuke.createNode( "IBK_Color_Master_v3.gizmo" )', icon='IBKGizmo.png')
+nuke.menu('Nodes').addCommand('Keyer/TXHueKeyer', 'nuke.createNode("TX_HueKeyer.gizmo")', icon='HueKeyer.png')
+nuke.menu('Nodes').addCommand('Other/Backdrop', 'nukescripts.autoBackdrop()','shift+b', icon='Backdrop.png')
