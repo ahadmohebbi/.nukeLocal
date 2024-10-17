@@ -142,3 +142,4 @@ nuke.menu('Nodes').addCommand('Keyer/DespillMadness', 'nuke.createNode("DespillM
 nuke.menu('Nodes').addCommand('Keyer/IBKColourMaster', 'nuke.createNode( "IBK_Color_Master_v3.gizmo" )', icon='IBKGizmo.png')
 nuke.menu('Nodes').addCommand('Keyer/TXHueKeyer', 'nuke.createNode("TX_HueKeyer.gizmo")', icon='HueKeyer.png')
 nuke.menu('Nodes').addCommand('Other/Backdrop', 'nukescripts.autoBackdrop()','shift+b', icon='Backdrop.png')
+nuke.menu('Nodes').addCommand('Filter/AlphaEdge', 'nuke.createNode("AlphaEdge.gizmo")', icon='EdgeDetect.png')
