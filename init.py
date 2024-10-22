@@ -4,7 +4,8 @@ def extend_plugin_path():
              "gizmos",
              "Utilities/pixelfudger3",
              "utilities/stamps",
-             "utilities/NukeSurvivalToolkit"
+             "utilities/NukeSurvivalToolkit",
+             "utilities/RBL_Gizmopack"
             ]
     for path in paths:
         nuke.pluginAddPath(path)

@@ -1,0 +1,171 @@
+set cut_paste_input [stack 0]
+version 13.0 v2
+push $cut_paste_input
+Group {
+ name IBKColour_Stack
+ knobChanged "m = nuke.thisNode()\nkc = nuke.thisKnob()\nscreentype = m.knob(\"masterscreentype\").getValue()\n\nif kc.name() in \[\"masterscreentype\"]:\n    for n in nuke.allNodes(\"IBKColourV3\"):\n        if screentype == 1.0:\n            n.knob('screen_type').setValue(\"green\")\n\n        else:\n            n.knob('screen_type').setValue(\"blue\")"
+ tile_color 0x9900ff
+ selected true
+ addUserKnob {20 User}
+ addUserKnob {4 masterscreentype l "Screen Type" t "Screen Color" M {Blue Green ""}}
+ masterscreentype Green
+ addUserKnob {4 numberofstacks l "    Stack Number  " t "Number of IBK Colours to stack,  every IBK Colour that is added will double the size of the patch black." -STARTLINE M {1 2 3 4 5 6 7 8 9 10 11 "" "" "" "" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {6 ibkcheck l "View Top IBK Color" t "View the top IBK Color node to set up your darks, lights, and erode." +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {41 Size l size T IBKColourV3_1.Size}
+ addUserKnob {41 off l darks T IBKColourV3_1.off}
+ addUserKnob {41 mult l lights T IBKColourV3_1.mult}
+ addUserKnob {26 ""}
+ addUserKnob {41 erode T IBKColourV3_1.erode}
+ addUserKnob {26 ""}
+ addUserKnob {7 patchmaster l "Patch Black" t "Adds to the patch black value of the last node in your stack." R 0 100}
+ addUserKnob {26 v2 l "" +STARTLINE T "\nIBKColour_Stack v2"}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos 306
+  ypos 551
+  number 1
+ }
+ Input {
+  inputs 0
+  name InputC
+  xpos 510
+  ypos 446
+ }
+ Merge2 {
+  inputs 2
+  operation stencil
+  name Merge26
+  xpos 510
+  ypos 551
+ }
+ Dot {
+  name Dot1
+  xpos 544
+  ypos 729
+ }
+ IBKColourV3 {
+  name IBKColourV3_1
+  screen_type green
+  multi {{"((0==numberofstacks ? 1 : 0)*patchmaster)"}}
+ }
+set N45accf00 [stack 0]
+ Dot {
+  name Dot3
+  xpos 260
+  ypos 750
+ }
+ Dot {
+  name Dot2
+  note_font "Verdana Bold"
+  note_font_size 24
+  xpos 260
+  ypos 1974
+ }
+push $N45accf00
+ IBKColourV3 {
+  name IBKColourV3_2
+  disable {{"1<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((1==numberofstacks ? 1 : 0)*patchmaster)+1"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_3
+  disable {{"2<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size 100}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((2==numberofstacks ? 1 : 0)*patchmaster)+2"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_4
+  disable {{"3<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((3==numberofstacks ? 1 : 0)*patchmaster)+4"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_5
+  disable {{"4<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((4==numberofstacks ? 1 : 0)*patchmaster)+8"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_6
+  disable {{"5<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((5==numberofstacks ? 1 : 0)*patchmaster)+16"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_7
+  disable {{"6<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((6==numberofstacks ? 1 : 0)*patchmaster)+32"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_8
+  disable {{"7<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((7==numberofstacks ? 1 : 0)*patchmaster)+64"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_9
+  disable {{"8<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((8==numberofstacks ? 1 : 0)*patchmaster)+128"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_10
+  disable {{"9<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((9==numberofstacks ? 1 : 0)*patchmaster)+256"}}
+ }
+ IBKColourV3 {
+  name IBKColourV3_11
+  disable {{"10<=numberofstacks ? 0 : 1"}}
+  screen_type green
+  Size {{IBKColourV3_1.Size}}
+  off {{IBKColourV3_1.off.r} {IBKColourV3_1.off.g} {IBKColourV3_1.off.b}}
+  mult {{IBKColourV3_1.mult.r} {IBKColourV3_1.mult.g} {IBKColourV3_1.mult.b}}
+  multi {{"((10==numberofstacks ? 1 : 0)*patchmaster)+512"}}
+ }
+ Switch {
+  inputs 2
+  which {{ibkcheck}}
+  name Switch3
+  xpos 510
+  ypos 1971
+ }
+ Output {
+  name Output1
+  xpos 510
+  ypos 2039
+ }
+end_group
