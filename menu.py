@@ -143,3 +143,5 @@ nuke.menu('Nodes').addCommand('Keyer/IBKColourMaster', 'nuke.createNode( "IBK_Co
 nuke.menu('Nodes').addCommand('Keyer/TXHueKeyer', 'nuke.createNode("TX_HueKeyer.gizmo")', icon='HueKeyer.png')
 nuke.menu('Nodes').addCommand('Other/Backdrop', 'nukescripts.autoBackdrop()','shift+b', icon='Backdrop.png')
 nuke.menu('Nodes').addCommand('Filter/FlowWarp', 'nuke.createNode("FlowWarp.gizmo")')
+import NukeGrabTool
+import AnimationMaker
